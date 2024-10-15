@@ -205,8 +205,6 @@ function startTimer() {
   return timer;
 }
 
-startTimer();
-
 /**
 *
 * This is the event handler that gets called when a player
@@ -231,7 +229,7 @@ function setEventListeners(){
   );
   return moles;
 }
-setEventListeners();
+
 
 /**
 *
@@ -264,6 +262,10 @@ function stopGame(){
 */
 function startGame(){
   setDuration(10);
+  timerDisplay.textContent = 10;
+  clearScore();
+  startTimer();
+  setEventListeners();
   showUp();
   return "game started";
 }
