@@ -10,6 +10,8 @@ let lastHole = 0;
 let points = 0;
 let difficulty = "hard";
 
+let myAudio = document.querySelector('#audio');
+
 
  // Generates a random integer within a range.
 function randomInteger(min, max) {
@@ -152,7 +154,6 @@ function setDuration(duration) {
 *
 */
 function stopGame(){
-  // stopAudio(song);  //optional
   clearInterval(timer);
   return "game stopped";
 }
@@ -164,13 +165,18 @@ function stopGame(){
 *
 */
 function startGame(){
-  setDuration(10);
-  timerDisplay.textContent = 10;
-  clearScore();
-  startTimer();
-  setEventListeners();
-  showUp();
-  return "game started";
+  if (time > 0) {
+    console.log("game already in play")
+  } else {
+    myAudio.play();
+    setDuration(10);
+    timerDisplay.textContent = 10;
+    clearScore();
+    startTimer();
+    setEventListeners();
+    showUp();
+    return "game started";
+  }
 }
 
 startButton.addEventListener("click", startGame);
