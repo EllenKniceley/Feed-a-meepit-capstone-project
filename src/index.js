@@ -95,8 +95,14 @@ function chooseHole(holes) {
 *
 */
 function gameOver() {
-  // TODO: Write your code here
-  
+  if (time > 0) {
+    timeoutID = showUp();
+    return timeoutID;
+  } else {
+    gameStopped = stopGame();
+    return gameStopped;
+  }
+
 }
 
 /**
@@ -123,11 +129,11 @@ function showUp() {
 *
 */
 function showAndHide(hole, delay){
-  // TODO: call the toggleVisibility function so that it adds the 'show' class.
+  //  call the toggleVisibility function so that it adds the 'show' class.
   toggleVisibility(hole);
   
   const timeoutID = setTimeout(() => {
-    // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
+    //  call the toggleVisibility function so that it removes the 'show' class when the timer times out.
     toggleVisibility(hole);
     gameOver();
   }, delay); 
@@ -141,7 +147,7 @@ function showAndHide(hole, delay){
 *
 */
 function toggleVisibility(hole){
-  // TODO: add hole.classList.toggle so that it adds or removes the 'show' class.
+  //  add hole.classList.toggle so that it adds or removes the 'show' class.
   hole.classList.toggle("show")
   return hole;
 }
@@ -255,8 +261,8 @@ function stopGame(){
 *
 */
 function startGame(){
-  //setDuration(10);
-  //showUp();
+  setDuration(10);
+  showUp();
   return "game started";
 }
 
